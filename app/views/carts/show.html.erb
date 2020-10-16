@@ -34,9 +34,12 @@
 
   <div class="row">
     <div class="col-xs-12">
+    <% if enhanced_cart.length() > 0 %>
       <%= form_tag orders_path do %>
         <script
-          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+ 
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-amount="<%= cart_subtotal_cents %>"
           data-name="Jungle"
@@ -45,8 +48,11 @@
           data-email="kvirani@gmail.com"
           data-currency="cad">
         </script>
-      <% end %>
+        <% end %>
+    <% else %>
+        <div>Your cart is currently empty</div>
+        <a href="/">Home</a>
+    <% end %>
     </div>
   </div>
-
 </section>
