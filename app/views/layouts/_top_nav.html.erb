@@ -11,6 +11,8 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
+
+
         <li>
           <%= link_to 'Home', :root %>
         </li>
@@ -28,6 +30,14 @@
           <%= link_to 'About', :about %>
         </li>
         </li>
+        <% if current_user %>
+
+        <li><%= link_to "Logout", '/logout' %></li>
+        <li>Signed in as <%= current_user.name %></li>
+  
+        <% else %>
+        <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+        <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
        <li class="dropdown">
